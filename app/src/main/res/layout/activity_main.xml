@@ -39,9 +39,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="5dp"
         android:backgroundTint="@color/black_sushi"
+        android:onClick="Add_bt"
+        android:text="Добавить"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:text="Добавить"
         android:textSize="18dp"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ListSushi"
         app:strokeColor="#f0a924"
         app:strokeWidth="2dp"></Button>
+
     <RelativeLayout
         android:id="@+id/Niz"
         android:layout_width="match_parent"
