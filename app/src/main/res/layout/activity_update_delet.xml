@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add">
+    tools:context=".Update_Delet">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/AddImage"
+        android:id="@+id/UpdateImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/zaglushka"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +18,8 @@
         app:shapeAppearanceOverlay="@style/RoundedSquare"
         app:strokeColor="#f0a924"
         app:strokeWidth="4dp" />
-
-
     <EditText
-        android:id="@+id/addName"
+        android:id="@+id/UpName"
         android:layout_width="match_parent"
         android:layout_height="48dp"
 
@@ -33,10 +31,10 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddImage"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/UpdateImage"></EditText>
 
     <EditText
-        android:id="@+id/addPrice"
+        android:id="@+id/UpPrice"
         android:layout_width="match_parent"
         android:layout_height="48dp"
 
@@ -48,10 +46,9 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addName"></EditText>
-
+        app:layout_constraintTop_toBottomOf="@+id/UpName"></EditText>
     <EditText
-        android:id="@+id/addCompound"
+        android:id="@+id/UpCompound"
         android:layout_width="match_parent"
         android:layout_height="48dp"
 
@@ -62,10 +59,10 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPrice"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/UpPrice"></EditText>
 
     <Button
-        android:id="@+id/Add_data"
+        android:id="@+id/Update"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -75,15 +72,37 @@
         android:layout_marginHorizontal="5dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/black_sushi"
-        android:text="Добавить"
+        android:text="Изменить"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/Delet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#f0a924"
+        app:strokeWidth="2dp"></Button>
+
+    <Button
+        android:id="@+id/Delet"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/black_sushi"
+        android:text="Удалить"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:cornerRadius="50dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Niz"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Niz"
+        app:layout_constraintStart_toEndOf="@+id/Update"
         app:strokeColor="#f0a924"
         app:strokeWidth="2dp"></Button>
 

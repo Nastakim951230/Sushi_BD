@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/nasty/.android/Praktica_41P/Sushi/app/src/main/res/layout/mask_sushi.xml" value="0.1" />
+        <entry key="..\:/Users/nasty/.android/Praktica_41P/Sushi/app/src/main/res/layout/activity_add.xml" value="0.1" />
+        <entry key="..\:/Users/nasty/.android/Praktica_41P/Sushi/app/src/main/res/layout/activity_update_delet.xml" value="0.264" />
+        <entry key="..\:/Users/nasty/.android/Praktica_41P/Sushi/app/src/main/res/layout/mask_sushi.xml" value="0.10344827586206896" />
       </map>
     </option>
   </component>
