@@ -3,7 +3,6 @@ package com.example.sushi_bd;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -43,7 +42,7 @@ public class AdapterMask extends BaseAdapter {
     public long getItemId(int i) {
         return maskList.get(i).getId();
     }
-/*
+
     public static Bitmap loadContactPhoto(ContentResolver cr, long id, Context context) {
         Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
         InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(cr, uri);
@@ -53,7 +52,7 @@ public class AdapterMask extends BaseAdapter {
         }
         return BitmapFactory.decodeStream(input);
     }
-*/
+
 
     private Bitmap getUserImage(String encodedImg)
     {

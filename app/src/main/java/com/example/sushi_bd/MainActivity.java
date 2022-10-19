@@ -1,12 +1,12 @@
 package com.example.sushi_bd;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,7 +38,7 @@ private List<Mask> listSushi=new ArrayList<>();
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                URL url = new URL ("http://10.0.2.2:21/ngknn/ТрифоноваАР/api/Sushis");
+                URL url = new URL ( "http://10.0.2.2:80/ngknn/ТрифоноваАР/api/Sushis");
                 HttpURLConnection connection=(HttpURLConnection) url.openConnection();
 
                 BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
