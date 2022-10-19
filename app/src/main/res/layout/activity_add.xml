@@ -11,10 +11,12 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
+        android:onClick="onClickChooseImage"
         android:src="@drawable/zaglushka"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"
         app:shapeAppearanceOverlay="@style/RoundedSquare"
         app:strokeColor="#f0a924"
         app:strokeWidth="4dp" />
