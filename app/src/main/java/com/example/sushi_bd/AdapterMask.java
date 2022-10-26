@@ -3,6 +3,7 @@ package com.example.sushi_bd;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -81,7 +82,7 @@ public class AdapterMask extends BaseAdapter {
         Compound.setText(mask.getCompound());
         Price.setText(Integer.toString(mask.getPrice()));
         Image.setImageBitmap(getUserImage(mask.getImage()));
-        /*
+
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +92,7 @@ public class AdapterMask extends BaseAdapter {
 
             }
         });
-        */
+
 
         return v;
     }

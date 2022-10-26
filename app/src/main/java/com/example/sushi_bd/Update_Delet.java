@@ -1,9 +1,5 @@
 package com.example.sushi_bd;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,25 +12,36 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.ByteArrayOutputStream;
+import java.sql.Connection;
 import java.util.Base64;
 
 public class Update_Delet extends AppCompatActivity {
     ImageView imageView;
     EditText Name, Price, Compound;
     String img="";
+    Mask mask;
+    Connection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delet);
+
+        mask=getIntent().getParcelableExtra("Sushi");
         imageView=findViewById(R.id.UpdateImage);
 
         Name=findViewById(R.id.UpName);
-
+        Name.setText(mask.getName());
         Price=findViewById(R.id.UpPrice);
-
+        Price.setText(Integer.toString(mask.getPrice()));
         Compound=findViewById(R.id.UpCompound);
+        Compound.setText(mask.getCompound());
+        imageView.setImageBitmap(getImgBitmap(mask.getImage()));
     }
 
     private Bitmap getImgBitmap(String encodedImg) {
@@ -93,7 +100,7 @@ public class Update_Delet extends AppCompatActivity {
         }
         return "";
     }
-    public void Update_bt(Void v)
+    public void Update_bt(View v)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(Update_Delet.this);
         builder.setTitle("Изменение")
@@ -120,7 +127,7 @@ public class Update_Delet extends AppCompatActivity {
 
     }
 
-    public void Delet_bt(Void v)
+    public void Delet_bt(View v)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(Update_Delet.this);
         builder.setTitle("Удалить")

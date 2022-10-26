@@ -13,6 +13,7 @@
         android:layout_marginTop="10dp"
         android:onClick="onClickChooseImage"
         android:src="@drawable/zaglushka"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,10 +49,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UpName"></EditText>
+
     <EditText
         android:id="@+id/UpCompound"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="120dp"
 
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -96,12 +98,13 @@
         android:layout_marginHorizontal="5dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/black_sushi"
+        android:onClick="Delet_bt"
         android:text="Удалить"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18dp"
-        app:cornerRadius="50dp"
 
+        app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Niz"
         app:layout_constraintStart_toEndOf="@+id/Update"

@@ -20,10 +20,11 @@
 
     <ListView
         android:id="@+id/ListSushi"
-        android:layout_width="417dp"
-        android:layout_height="594dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/Niz"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Vverh">
 
