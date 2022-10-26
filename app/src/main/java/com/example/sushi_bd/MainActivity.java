@@ -35,6 +35,7 @@ private List<Mask> listSushi=new ArrayList<>();
     private class GetSushi extends AsyncTask<Void,Void,String>
     {
 
+
         @Override
         protected String doInBackground(Void... voids) {
             try {
