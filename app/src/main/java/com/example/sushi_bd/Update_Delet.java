@@ -144,7 +144,7 @@ public class Update_Delet extends AppCompatActivity {
                 .build();
         RetrofitAPIUpdate update = retrofit.create(RetrofitAPIUpdate.class);
         DataModal modal = new DataModal(image, name,compound,Integer.parseInt(price));
-        Call<DataModal> call = update.updateData(modal);
+        Call<DataModal> call = update.updateData(mask.getId(),modal);
         call.enqueue(new Callback<DataModal>() {
             @Override
             public void onResponse(Call<DataModal> call, Response<DataModal> response) {
