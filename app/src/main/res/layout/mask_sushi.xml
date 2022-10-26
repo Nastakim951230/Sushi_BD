@@ -15,7 +15,7 @@
        android:background="@drawable/black_mramor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="fitXY"
+
         app:layout_constraintTop_toTopOf="parent"></RelativeLayout>
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -24,6 +24,7 @@
         android:layout_height="110dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/zaglushka"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/Fon"
         app:layout_constraintStart_toStartOf="@+id/Fon"
         app:layout_constraintTop_toTopOf="@+id/Fon"
@@ -39,6 +40,7 @@
         android:layout_marginTop="5dp"
         android:inputType="number"
         android:text="156"
+        android:textColor="#ecae00"
         app:layout_constraintStart_toEndOf="@+id/PriceText"
         app:layout_constraintTop_toBottomOf="@+id/Name"></TextView>
 
@@ -59,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/white"
+        android:textColor="#ecae00"
         android:text="Название"
         app:layout_constraintStart_toEndOf="@+id/NameText"
         app:layout_constraintTop_toTopOf="@+id/Fon"></TextView>
@@ -82,7 +84,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="состав"
-        android:textColor="@color/white"
+        android:textColor="#ecae00"
         app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
         app:layout_constraintTop_toBottomOf="@+id/CompoundText"></TextView>
 

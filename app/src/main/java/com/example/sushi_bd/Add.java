@@ -12,19 +12,34 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Base64;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class Add extends AppCompatActivity {
     String img="";
     private ImageView imageButton;
+    private EditText Name,Compount,Price;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         imageButton=findViewById(R.id.AddImage);
+        Name=findViewById(R.id.addName);
+        Compount=findViewById(R.id.addCompound);
+        Price=findViewById(R.id.addPrice);
+
     }
 
     public void onClickChooseImage(View view)
@@ -81,7 +96,15 @@ public class Add extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        if (img=="")
+                        {
+                            img=null;
+                            postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
+                        }
+                        else
+                        {
+                            postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
+                        }
                         Next();
                     }
                 })
@@ -93,6 +116,36 @@ public class Add extends AppCompatActivity {
                 });
         AlertDialog dialog=builder.create();
         dialog.show();
+    }
+
+    private void postAdd(String image, String  name ,String compound,String price)
+    {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+
+
+        DataModal modal = new DataModal(image, name,compound,Integer.parseInt(price));
+
+        Call<DataModal> call = retrofitAPI.createPost(modal);
+        call.enqueue(new Callback<DataModal>() {
+            @Override
+            public void onResponse(Call<DataModal> call, Response<DataModal> response) {
+                Toast.makeText(Add.this, "Запись добавлена", Toast.LENGTH_SHORT).show();
+                Name.setText("");
+                Compount.setText("");
+                Price.setText("");
+                imageButton.setImageResource(R.drawable.zaglushka);
+                DataModal responseFromAPI = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<DataModal> call, Throwable t) {
+
+            }
+        });
     }
 
     public void Next()

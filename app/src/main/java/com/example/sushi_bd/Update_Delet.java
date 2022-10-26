@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -20,11 +22,18 @@ import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
 import java.util.Base64;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class Update_Delet extends AppCompatActivity {
     ImageView imageView;
     EditText Name, Price, Compound;
     String img="";
     Mask mask;
+
     Connection connection;
 
     @Override
@@ -52,8 +61,11 @@ public class Update_Delet extends AppCompatActivity {
             }
             return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         }
-        return BitmapFactory.decodeResource(Update_Delet.this.getResources(),
-                R.drawable.zaglushka);
+        else{
+            return BitmapFactory.decodeResource(Update_Delet.this.getResources(),
+                    R.drawable.zaglushka);
+        }
+
     }
 
 
@@ -109,7 +121,7 @@ public class Update_Delet extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        posUpdate(img,Name.getText().toString(),Compound.getText().toString(),Price.getText().toString());
                         Next();
                     }
                 })
@@ -121,10 +133,29 @@ public class Update_Delet extends AppCompatActivity {
                 });
         AlertDialog dialog=builder.create();
         dialog.show();
+    }
 
+    private void posUpdate(String image, String  name ,String compound,String price)
+    {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RetrofitAPIUpdate update = retrofit.create(RetrofitAPIUpdate.class);
+        DataModal modal = new DataModal(image, name,compound,Integer.parseInt(price));
+        Call<DataModal> call = update.updateData(modal);
+        call.enqueue(new Callback<DataModal>() {
+            @Override
+            public void onResponse(Call<DataModal> call, Response<DataModal> response) {
+                Toast.makeText(Update_Delet.this, "Запись изменена", Toast.LENGTH_SHORT).show();
+                DataModal responseFromAPI = response.body();
+            }
 
+            @Override
+            public void onFailure(Call<DataModal> call, Throwable t) {
 
-
+            }
+        });
     }
 
     public void Delet_bt(View v)
