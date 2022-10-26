@@ -51,6 +51,7 @@ public class Update_Delet extends AppCompatActivity {
         Compound=findViewById(R.id.UpCompound);
         Compound.setText(mask.getCompound());
         imageView.setImageBitmap(getImgBitmap(mask.getImage()));
+
     }
 
     private Bitmap getImgBitmap(String encodedImg) {
