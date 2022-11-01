@@ -1,9 +1,5 @@
 package com.example.sushi_bd;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,9 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Base64;
@@ -121,7 +120,7 @@ public class Add extends AppCompatActivity {
     private void postAdd(String image, String  name ,String compound,String price)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
+                .baseUrl("https://ngknn.ru:5101/NGKNN/ТрифоноваАР/api/Sushis/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);

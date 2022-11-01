@@ -39,7 +39,7 @@ private List<Mask> listSushi=new ArrayList<>();
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                URL url = new URL ( "https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis");
+                URL url = new URL ( "https://ngknn.ru:5101/NGKNN/ТрифоноваАР/api/Sushis");
                 HttpURLConnection connection=(HttpURLConnection) url.openConnection();
 
                 BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
