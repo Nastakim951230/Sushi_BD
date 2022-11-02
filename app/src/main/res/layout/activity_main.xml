@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CD9393"
     tools:context=".MainActivity">
 
 
@@ -11,10 +12,10 @@
         android:id="@+id/Vverh"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:background="@color/black_sushi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/black_sushi">
+        app:layout_constraintTop_toTopOf="parent">
 
     </RelativeLayout>
 
@@ -22,9 +23,10 @@
         android:id="@+id/ListSushi"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#F1C985"
         app:layout_constraintBottom_toTopOf="@+id/Niz"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Vverh">
 
@@ -63,4 +65,28 @@
         app:layout_constraintStart_toStartOf="parent">
 
     </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/vvybor"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:backgroundTint="#FF9800"
+        app:layout_constraintBottom_toBottomOf="@+id/Vverh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+
+        android:backgroundTint="#FF9800"
+
+        app:layout_constraintBottom_toBottomOf="@+id/Vverh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </Spinner>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
 private AdapterMask pAdapter;
 private List<Mask> listSushi=new ArrayList<>();
+    Spinner spinnerFilter;
+    String [] Filter={"Без фильтрации","По возрастанию","По убыванию"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,13 @@ private List<Mask> listSushi=new ArrayList<>();
         ListView sushiView=findViewById(R.id.ListSushi);
         pAdapter=new AdapterMask(MainActivity.this,listSushi);
         sushiView.setAdapter(pAdapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Filter);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerFilter=findViewById(R.id.filter);
+        spinnerFilter.setAdapter(adapter);
+
+
 
         new GetSushi().execute();
     }

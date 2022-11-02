@@ -95,16 +95,24 @@ public class Add extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (img=="")
+                        if (Name.getText().length()==0 || Compount.getText().length()==0 ||  Price.getText().length()==0 )
                         {
-                            img=null;
-                            postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
+                            Toast.makeText(Add.this, "Не заполненны обязательные поля", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                        else
-                        {
-                            postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
+                        else{
+                            if (img=="")
+                            {
+                                img=null;
+                                postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
+                            }
+                            else
+                            {
+                                postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
+                            }
+                            Next();
                         }
-                        Next();
+
                     }
                 })
                 .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
@@ -138,6 +146,7 @@ public class Add extends AppCompatActivity {
                 Price.setText("");
                 imageButton.setImageResource(R.drawable.zaglushka);
                 DataModal responseFromAPI = response.body();
+
             }
 
             @Override
