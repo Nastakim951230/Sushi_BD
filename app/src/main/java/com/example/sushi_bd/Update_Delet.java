@@ -121,7 +121,7 @@ public class Update_Delet extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        posUpdate(img,Name.getText().toString(),Compound.getText().toString(),Price.getText().toString());
+                        putUpdate(img,Name.getText().toString(),Compound.getText().toString(),Price.getText().toString());
                         Next();
                     }
                 })
@@ -135,7 +135,7 @@ public class Update_Delet extends AppCompatActivity {
         dialog.show();
     }
 
-    private void posUpdate(String image, String  name ,String compound,String price)
+    private void putUpdate(String image, String  name ,String compound,String price)
     {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
@@ -167,7 +167,7 @@ public class Update_Delet extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        deleteDelet();
                         Next();
                     }
                 })
@@ -179,6 +179,32 @@ public class Update_Delet extends AppCompatActivity {
                 });
         AlertDialog dialog=builder.create();
         dialog.show();
+    }
+
+    public  void deleteDelet()
+    {
+
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            RetrofitAPIDelete delete = retrofit.create(RetrofitAPIDelete.class);
+            Call<DataModal> call = delete.deleteData(mask.getId());
+
+            call.enqueue(new Callback<DataModal>() {
+                @Override
+                public void onResponse(Call<DataModal> call, Response<DataModal> response) {
+                    Toast.makeText(Update_Delet.this, "Запись удалена", Toast.LENGTH_SHORT).show();
+                    DataModal responseFromAPI = response.body();
+                }
+
+                @Override
+                public void onFailure(Call<DataModal> call, Throwable t) {
+
+                }
+            });
+
     }
 
     public void Next()
