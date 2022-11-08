@@ -3,11 +3,15 @@ package com.example.sushi_bd;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -21,11 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    String  zagolovok="Name";
 private AdapterMask pAdapter;
 private List<Mask> listSushi=new ArrayList<>();
-    Spinner spinnerFilter;
+    Spinner spinnerFilter,spinnerChoice;
     String [] Filter={"Без фильтрации","По возрастанию","По убыванию"};
+    String [] Choice={"Без выбора","Название","Цена"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +44,69 @@ private List<Mask> listSushi=new ArrayList<>();
         spinnerFilter=findViewById(R.id.filter);
         spinnerFilter.setAdapter(adapter);
 
+        ArrayAdapter<String> adapterChoice = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Choice);
+        adapterChoice.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        spinnerChoice=findViewById(R.id.vvybor);
+        spinnerChoice.setAdapter(adapterChoice);
 
         new GetSushi().execute();
     }
+
+    //Поиск по listview
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu,menu);
+
+        MenuItem item=menu.findItem(R.id.search);
+        SearchView searchView=(SearchView)item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                txtSearch(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                txtSearch(newText);
+
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //Выбор по какой из столбцов будет поиск (троиточие рядом с поиском)
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+
+        if(id==R.id.NamePoisk)
+        {
+            zagolovok="Name";
+        }
+        else
+        if(id==R.id.PreciPoisk)
+        {
+            zagolovok="Surname";
+        }
+        else
+        if(id==R.id.SostavPoisk)
+        {
+            zagolovok="Job_title";
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private  void txtSearch(String str)
+    {}
+
+
     private class GetSushi extends AsyncTask<Void,Void,String>
     {
 

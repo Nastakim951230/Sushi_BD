@@ -68,9 +68,12 @@
 
     <Spinner
         android:id="@+id/vvybor"
+
         android:layout_width="wrap_content"
         android:layout_height="70dp"
+
         android:backgroundTint="#FF9800"
+        android:backgroundTintMode="src_in"
         app:layout_constraintBottom_toBottomOf="@+id/Vverh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
