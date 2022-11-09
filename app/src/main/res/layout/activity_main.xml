@@ -74,6 +74,7 @@
 
         android:backgroundTint="#FF9800"
         android:backgroundTintMode="src_in"
+        android:popupBackground="@color/yellow_sushi"
         app:layout_constraintBottom_toBottomOf="@+id/Vverh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -87,6 +88,7 @@
 
         android:backgroundTint="#FF9800"
 
+        android:popupBackground="@color/yellow_sushi"
         app:layout_constraintBottom_toBottomOf="@+id/Vverh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
