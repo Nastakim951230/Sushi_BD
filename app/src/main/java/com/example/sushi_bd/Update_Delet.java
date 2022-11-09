@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Update_Delet extends AppCompatActivity {
     ImageView imageView;
     EditText Name, Price, Compound;
-    String img="";
+    String img;
     Mask mask;
 
     Connection connection;
@@ -110,7 +111,7 @@ public class Update_Delet extends AppCompatActivity {
             img=Base64.getEncoder().encodeToString(bytes);
             return img;
         }
-        return "";
+        return null;
     }
     public void Update_bt(View v)
     {
@@ -121,7 +122,14 @@ public class Update_Delet extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        putUpdate(img,Name.getText().toString(),Compound.getText().toString(),Price.getText().toString());
+                        if(img==null)
+                        {
+                            img=mask.getImage();
+                        }
+
+                            putUpdate(img, Name.getText().toString(), Compound.getText().toString(), Price.getText().toString());
+
+                        SystemClock.sleep(1000);
                         Next();
                     }
                 })
@@ -138,7 +146,7 @@ public class Update_Delet extends AppCompatActivity {
     private void putUpdate(String image, String  name ,String compound,String price)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
+                .baseUrl("https://ngknn.ru:5001/NGKNN/ТрифоноваАР/api/Sushis/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPIUpdate update = retrofit.create(RetrofitAPIUpdate.class);
@@ -156,6 +164,7 @@ public class Update_Delet extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void Delet_bt(View v)
@@ -168,6 +177,7 @@ public class Update_Delet extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         deleteDelet();
+                        SystemClock.sleep(1000);
                         Next();
                     }
                 })
@@ -186,7 +196,7 @@ public class Update_Delet extends AppCompatActivity {
 
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://ngknn.ru:5101/ngknn/ТрифоноваАР/api/Sushis/")
+                    .baseUrl("https://ngknn.ru:5001/NGKNN/ТрифоноваАР/api/Sushis/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             RetrofitAPIDelete delete = retrofit.create(RetrofitAPIDelete.class);
@@ -203,7 +213,9 @@ public class Update_Delet extends AppCompatActivity {
                 public void onFailure(Call<DataModal> call, Throwable t) {
 
                 }
+
             });
+
 
     }
 

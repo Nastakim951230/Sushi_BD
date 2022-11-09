@@ -93,12 +93,12 @@ private List<Mask> listSushi=new ArrayList<>();
         else
         if(id==R.id.PreciPoisk)
         {
-            zagolovok="Surname";
+            zagolovok="Price";
         }
         else
         if(id==R.id.SostavPoisk)
         {
-            zagolovok="Job_title";
+            zagolovok="Compound";
         }
         return super.onOptionsItemSelected(item);
     }
@@ -114,7 +114,7 @@ private List<Mask> listSushi=new ArrayList<>();
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                URL url = new URL ( "https://ngknn.ru:5101/NGKNN/ТрифоноваАР/api/Sushis");
+                URL url = new URL ( "https://ngknn.ru:5001/NGKNN/ТрифоноваАР/api/Sushis");
                 HttpURLConnection connection=(HttpURLConnection) url.openConnection();
 
                 BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));

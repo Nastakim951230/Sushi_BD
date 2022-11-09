@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -110,6 +111,7 @@ public class Add extends AppCompatActivity {
                             {
                                 postAdd(img,Name.getText().toString(),Compount.getText().toString(),Price.getText().toString());
                             }
+                            SystemClock.sleep(1000);
                             Next();
                         }
 
@@ -128,7 +130,7 @@ public class Add extends AppCompatActivity {
     private void postAdd(String image, String  name ,String compound,String price)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://ngknn.ru:5101/NGKNN/ТрифоноваАР/api/Sushis/")
+                .baseUrl("https://ngknn.ru:5001/NGKNN/ТрифоноваАР/api/Sushis/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
@@ -154,6 +156,7 @@ public class Add extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void Next()

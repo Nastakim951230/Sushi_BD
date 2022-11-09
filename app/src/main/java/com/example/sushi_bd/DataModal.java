@@ -42,3 +42,4 @@ public class DataModal {
         return Price;
     }
 }
+
