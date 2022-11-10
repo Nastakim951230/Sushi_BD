@@ -35,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 
 public class MainActivity extends AppCompatActivity {
-    String  zagolovok="Name",valueSort=null,fieldSort=null,Search=null;
+    String  zagolovok=null,valueSort=null,fieldSort=null,Search=null;
 private AdapterMask pAdapter;
 
     private List<Mask> listSushi=new ArrayList<>();
